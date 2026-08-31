@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Bouton "Dona ora" → ouvre l'email du visiteur avec un message pré-rempli,
   // adressé à la boîte de la fondation. Aucun paiement en ligne n'est traité sur le site.
-  const DONATION_EMAIL = 'info@manoamica.org'; // TODO: remplacer par la boîte mail définitive fournie par la fondation
+  const DONATION_EMAIL = 'donazioni@mano-amica.org';
 
   const DONATION_MAIL_TEXT = {
     it: {
