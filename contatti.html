@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti — Mano Amica</title>
+<meta name="description" content="Contatta la Fondazione Mano Amica per domande, idee o proposte di collaborazione.">
+<meta property="og:title" content="Contatti — Mano Amica">
+<meta property="og:description" content="Contatta la Fondazione Mano Amica per domande, idee o proposte di collaborazione.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=1788168268">
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="logo">Mano Amica</a>
+    <button class="thread-toggle" id="toggle" aria-label="Apri il menu"><span></span><span></span></button>
+  </div>
+
+  <div class="veil" id="veil">
+    <div class="veil-inner">
+      <div class="veil-stitch"></div>
+      <ul class="nav-list">
+        <li><a href="index.html"><span class="num">00</span><span data-i18n="nav_home">Home</span><span class="tag" data-i18n="nav_home_tag">torna all'inizio</span></a></li><li><a href="chi-siamo.html"><span class="num">01</span><span data-i18n="nav_chi_siamo">Chi siamo</span><span class="tag" data-i18n="nav_chi_siamo_tag">la nostra storia</span></a></li>
+        <li><a href="come-aiutiamo.html"><span class="num">02</span><span data-i18n="nav_come_aiutiamo">Come aiutiamo</span><span class="tag" data-i18n="nav_come_aiutiamo_tag">i nostri progetti</span></a></li>
+        <li><a href="dona-ora.html"><span class="num">03</span><span data-i18n="nav_dona_ora">Dona ora</span><span class="tag" data-i18n="nav_dona_ora_tag">ogni gesto conta</span></a></li>
+        <li><a href="contatti.html" class="current"><span class="num">04</span><span data-i18n="nav_contatti">Contatti</span><span class="tag" data-i18n="nav_contatti_tag">scrivici</span></a></li><li><a href="archivio.html"><span class="num">05</span><span data-i18n="nav_archivio">Archivio</span><span class="tag" data-i18n="nav_archivio_tag">foto e storie</span></a></li>
+      </ul>
+      <div class="veil-foot">
+        <div class="lang-pill"><button data-lang="it" class="active">IT</button><button data-lang="fr">FR</button><button data-lang="en">EN</button></div>
+        <p class="veil-note" data-i18n="veil_note">Fondazione Mano Amica · Italia — al fianco di chi ha più bisogno.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="page-hero">
+    <span class="hero-eyebrow" data-i18n="co_eyebrow">Contatti</span>
+    <h1 data-i18n-html="co_h1">Parliamone, <em>siamo qui</em>.</h1>
+    <p class="lead" data-i18n="co_lead">Una domanda, un'idea, una proposta di collaborazione? Scrivici, ti rispondiamo il prima possibile.</p>
+  </section>
+
+  <section class="contact-wrap">
+    <form id="contact-form">
+      <div class="field"><label for="nome" data-i18n="co_label_name">Nome e cognome</label><input id="nome" type="text" placeholder="Mario Rossi" data-i18n-placeholder="co_ph_name" required></div>
+      <div class="field"><label for="email" data-i18n="co_label_email">Email</label><input id="email" type="email" placeholder="mario.rossi@email.it" data-i18n-placeholder="co_ph_email" required></div>
+      <div class="field"><label for="msg" data-i18n="co_label_msg">Messaggio</label><textarea id="msg" rows="5" placeholder="Scrivi qui il tuo messaggio..." data-i18n-placeholder="co_ph_msg" required></textarea></div>
+      <!-- Champ piège anti-spam : invisible pour un humain, souvent rempli par un bot -->
+      <input type="text" id="website" name="website" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
+      <button type="submit" class="btn btn-solid" id="contact-submit-btn" data-i18n="co_submit">Invia messaggio</button>
+      <p id="contact-status" style="font-size:.85rem; margin-top:14px; display:none;"></p>
+    </form>
+
+    <div>
+      <ul class="contact-info">
+        <li><p class="k" data-i18n="co_k_email">Email</p><p class="v">info@manoamica.org</p></li>
+        <li><p class="k" data-i18n="co_k_phone">Telefono</p><p class="v">+39 0X XXXX XXXX</p></li>
+        <li><p class="k" data-i18n="co_k_address">Sede</p><p class="v" data-i18n="co_v_address">Italia</p></li>
+        <li><p class="k" data-i18n="co_k_social">Social</p><p class="v" data-i18n="co_v_social">Instagram · Facebook</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Mano Amica</strong>
+    <nav><a href="index.html" data-i18n="nav_home">Home</a><a href="chi-siamo.html" data-i18n="nav_chi_siamo">Chi siamo</a><a href="come-aiutiamo.html" data-i18n="nav_come_aiutiamo">Come aiutiamo</a><a href="dona-ora.html" data-i18n="nav_dona_ora">Dona ora</a><a href="contatti.html" data-i18n="nav_contatti">Contatti</a><a href="archivio.html" data-i18n="nav_archivio">Archivio</a><a href="privacy.html">Privacy</a><a href="cookie-policy.html">Cookie</a></nav>
+    <span data-i18n="footer_copyright">© 2026 · Fondazione registrata in Italia</span>
+  </footer>
+
+<script src="assets/script.js?v=1788168268"></script>
+</body>
+</html>

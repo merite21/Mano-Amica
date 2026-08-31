@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archivio — Mano Amica</title>
+<meta name="description" content="Foto e storie della Fondazione Mano Amica: la nostra comunità, le persone che sosteniamo, i doni ricevuti.">
+<meta property="og:title" content="Archivio — Mano Amica">
+<meta property="og:description" content="Foto e storie della Fondazione Mano Amica.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=1788168268">
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="logo">Mano Amica</a>
+    <button class="thread-toggle" id="toggle" aria-label="Apri il menu"><span></span><span></span></button>
+  </div>
+
+  <div class="veil" id="veil">
+    <div class="veil-inner">
+      <div class="veil-stitch"></div>
+      <ul class="nav-list">
+        <li><a href="index.html"><span class="num">00</span><span data-i18n="nav_home">Home</span><span class="tag" data-i18n="nav_home_tag">torna all'inizio</span></a></li><li><a href="chi-siamo.html"><span class="num">01</span><span data-i18n="nav_chi_siamo">Chi siamo</span><span class="tag" data-i18n="nav_chi_siamo_tag">la nostra storia</span></a></li>
+        <li><a href="come-aiutiamo.html"><span class="num">02</span><span data-i18n="nav_come_aiutiamo">Come aiutiamo</span><span class="tag" data-i18n="nav_come_aiutiamo_tag">i nostri progetti</span></a></li>
+        <li><a href="dona-ora.html"><span class="num">03</span><span data-i18n="nav_dona_ora">Dona ora</span><span class="tag" data-i18n="nav_dona_ora_tag">ogni gesto conta</span></a></li>
+        <li><a href="contatti.html"><span class="num">04</span><span data-i18n="nav_contatti">Contatti</span><span class="tag" data-i18n="nav_contatti_tag">scrivici</span></a></li>
+        <li><a href="archivio.html" class="current"><span class="num">05</span><span data-i18n="nav_archivio">Archivio</span><span class="tag" data-i18n="nav_archivio_tag">foto e storie</span></a></li>
+      </ul>
+      <div class="veil-foot">
+        <div class="lang-pill"><button data-lang="it" class="active">IT</button><button data-lang="fr">FR</button><button data-lang="en">EN</button></div>
+        <p class="veil-note" data-i18n="veil_note">Fondazione Mano Amica · Italia — al fianco di chi ha più bisogno.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="page-hero">
+    <span class="hero-eyebrow" data-i18n="arch_eyebrow">Archivio</span>
+    <h1 data-i18n-html="arch_h1">Foto e storie della nostra <em>comunità</em>.</h1>
+    <p class="lead" data-i18n="arch_lead">Un archivio in crescita: i volti dietro la fondazione, le persone che sosteniamo, e i momenti che raccontano il nostro percorso insieme ai donatori.</p>
+  </section>
+
+  <section class="team">
+    <p class="section-label" data-i18n="arch_community_label">La nostra comunità</p>
+    <h2 style="max-width:24ch; font-size:clamp(1.6rem,3vw,2.3rem);" data-i18n="arch_community_h2">Chi porta avanti Mano Amica ogni giorno.</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo"><img src="assets/img/padre-1.jpg" alt="Padre Alphonso "></div>
+        <h3 data-i18n="cs_t2_name">Padre [Nome]</h3>
+        <p class="role" data-i18n="cs_t2_role">Guida spirituale</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="assets/img/suor-1.jpg" alt="Suor Magheritta"></div>
+        <h3 data-i18n="cs_t3_name">Suor [Nome]</h3>
+        <p class="role" data-i18n="cs_t3_role">Co-fondatrice religiosa</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="assets/img/suor-2.jpg" alt="Suor Esperendra — Coordinatrice"></div>
+        <h3 data-i18n="cs_t4_name">Suor [Nome]</h3>
+        <p class="role" data-i18n="cs_t4_role">Coordinatrice</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="team" style="background:var(--forest); color:var(--cream);">
+    <p class="section-label" style="color:var(--gold);" data-i18n="arch_helped_label">Chi sosteniamo</p>
+    <h2 style="max-width:24ch; font-size:clamp(1.6rem,3vw,2.3rem); color:var(--cream);" data-i18n="arch_helped_h2">Orfani, anziani, famiglie in difficoltà.</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo team-photo-placeholder gallery-slot"><span>📷</span></div>
+        <p class="gallery-caption" data-i18n="ca_gallery_note">In attesa della foto</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo team-photo-placeholder gallery-slot"><span>📷</span></div>
+        <p class="gallery-caption" data-i18n="ca_gallery_note">In attesa della foto</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo team-photo-placeholder gallery-slot"><span>📷</span></div>
+        <p class="gallery-caption" data-i18n="ca_gallery_note">In attesa della foto</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo team-photo-placeholder gallery-slot"><span>📷</span></div>
+        <p class="gallery-caption" data-i18n="ca_gallery_note">In attesa della foto</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="team">
+    <p class="section-label" data-i18n="arch_gifts_label">Doni e iniziative</p>
+    <h2 style="max-width:24ch; font-size:clamp(1.6rem,3vw,2.3rem);" data-i18n="arch_gifts_h2">I momenti condivisi con chi ci sostiene.</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo team-photo-placeholder gallery-slot"><span>📷</span></div>
+        <p class="gallery-caption" data-i18n="ca_gallery_note">In attesa della foto</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo team-photo-placeholder gallery-slot"><span>📷</span></div>
+        <p class="gallery-caption" data-i18n="ca_gallery_note">In attesa della foto</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo team-photo-placeholder gallery-slot"><span>📷</span></div>
+        <p class="gallery-caption" data-i18n="ca_gallery_note">In attesa della foto</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Mano Amica</strong>
+    <nav><a href="index.html" data-i18n="nav_home">Home</a><a href="chi-siamo.html" data-i18n="nav_chi_siamo">Chi siamo</a><a href="come-aiutiamo.html" data-i18n="nav_come_aiutiamo">Come aiutiamo</a><a href="dona-ora.html" data-i18n="nav_dona_ora">Dona ora</a><a href="contatti.html" data-i18n="nav_contatti">Contatti</a><a href="archivio.html" data-i18n="nav_archivio">Archivio</a><a href="privacy.html">Privacy</a><a href="cookie-policy.html">Cookie</a></nav>
+    <span data-i18n="footer_copyright">© 2026 · Fondazione registrata in Italia</span>
+  </footer>
+
+<script src="assets/script.js?v=1788168268"></script>
+</body>
+</html>
