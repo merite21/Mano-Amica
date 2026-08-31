@@ -103,47 +103,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Sélection de la méthode de paiement (page Dona ora)
-  document.querySelectorAll('.pay-method-item').forEach(item => {
-    item.addEventListener('click', () => {
-      if (item.classList.contains('disabled')) return;
-      document.querySelectorAll('.pay-method-item').forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-    });
-  });
+  // Bouton "Dona ora" → ouvre l'email du visiteur avec un message pré-rempli,
+  // adressé à la boîte de la fondation. Aucun paiement en ligne n'est traité sur le site.
+  const DONATION_EMAIL = 'info@manoamica.org'; // TODO: remplacer par la boîte mail définitive fournie par la fondation
 
-  // Le paiement par CARTE utilise le vrai Stripe (create-checkout-session.php).
-  // PayPal / Satispay / SEPA restent simulés en attendant leur intégration dédiée.
-  const SIMULATE_NON_CARD_METHODS = true;
-
-  let orgInfo = null;
-  fetch('assets/org-info.json').then(r => r.json()).then(d => { orgInfo = d; }).catch(() => {});
+  const DONATION_MAIL_TEXT = {
+    it: {
+      subject: amount => `Richiesta di donazione — ${amount} €`,
+      body: amount => `Buongiorno,\n\nDesidero fare una donazione di ${amount} € alla Fondazione Mano Amica.\nPotete indicarmi come procedere?\n\nGrazie mille,`
+    },
+    fr: {
+      subject: amount => `Demande de don — ${amount} €`,
+      body: amount => `Bonjour,\n\nJe souhaite faire un don de ${amount} € à la Fondation Mano Amica.\nPourriez-vous m'indiquer comment procéder ?\n\nMerci beaucoup,`
+    },
+    en: {
+      subject: amount => `Donation request — €${amount}`,
+      body: amount => `Hello,\n\nI would like to make a donation of €${amount} to the Mano Amica Foundation.\nCould you let me know how to proceed?\n\nThank you,`
+    }
+  };
 
   const confirmBtn = document.getElementById('confirm-donation');
-  const modal = document.getElementById('pay-modal');
-  const modalClose = document.getElementById('pay-modal-close');
-  const modalPayBtn = document.getElementById('modal-pay-btn');
-  let selectedAmount = 0;
-  let selectedMethod = 'card';
-
-  function openMethodPanel(method) {
-    document.querySelectorAll('.pay-modal-method').forEach(p => p.style.display = 'none');
-    const panel = document.getElementById('method-' + method);
-    if (panel) panel.style.display = 'block';
-
-    if (orgInfo) {
-      if (method === 'satispay') {
-        const el = document.getElementById('satispay-recipient');
-        if (el) el.value = orgInfo.satispayNumber || '';
-      }
-      if (method === 'sepa') {
-        document.getElementById('sepa-iban').textContent = orgInfo.iban || '-';
-        document.getElementById('sepa-bic').textContent = orgInfo.bic || '-';
-        document.getElementById('sepa-name').textContent = orgInfo.recipientName || '-';
-      }
-    }
-  }
-
   if (confirmBtn) {
     confirmBtn.addEventListener('click', () => {
       const errorEl = document.getElementById('donation-error');
@@ -152,8 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const customVal = parseFloat(document.getElementById('custom-amount').value);
       const activeBtn = document.querySelector('.amount-btn.active');
       const amount = customVal > 0 ? customVal : (activeBtn ? parseFloat(activeBtn.getAttribute('data-amount')) : 0);
-      const methodEl = document.querySelector('.pay-method-item.active');
-      const method = methodEl ? methodEl.getAttribute('data-method') : 'card';
 
       if (!amount || amount <= 0) {
         errorEl.textContent = translations['do_error_amount'] || 'Scegli o inserisci un importo valido.';
@@ -161,99 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      selectedAmount = amount;
-      selectedMethod = method;
-
-      document.getElementById('modal-recipient').textContent = (orgInfo && orgInfo.recipientName) || 'Fondazione Mano Amica';
-      document.getElementById('modal-amount').textContent = amount + ' €';
-      document.getElementById('modal-error').style.display = 'none';
-      modalPayBtn.disabled = false;
-      modalPayBtn.textContent = translations['modal_pay_btn'] || 'Paga ora';
-
-      openMethodPanel(method);
-      modal.classList.add('open');
-    });
-  }
-
-  function closeModal() { modal.classList.remove('open'); }
-  if (modalClose) modalClose.addEventListener('click', closeModal);
-  if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-  function showModalError(msg) {
-    const el = document.getElementById('modal-error');
-    el.textContent = msg;
-    el.style.display = 'block';
-  }
-
-  function validateModalFields(method) {
-    // La carta e PayPal non sono validées ici : Stripe/PayPal se ne occupano sulla loro pagina sicura.
-    if (method === 'satispay') {
-      const phone = document.getElementById('satispay-phone').value.trim();
-      if (phone.length < 6) return translations['modal_err_phone'] || 'Numero di telefono non valido.';
-    }
-    return null;
-  }
-
-  if (modalPayBtn) {
-    modalPayBtn.addEventListener('click', async () => {
-      document.getElementById('modal-error').style.display = 'none';
-      const errMsg = validateModalFields(selectedMethod);
-      if (errMsg) { showModalError(errMsg); return; }
-
-      const originalText = modalPayBtn.textContent;
-      modalPayBtn.textContent = translations['do_processing'] || 'Attendere...';
-      modalPayBtn.disabled = true;
-
-      // ==== CARTA : vrai Stripe, toujours (jamais simulé) ====
-      if (selectedMethod === 'card') {
-        try {
-          const res = await fetch('create-checkout-session.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount: selectedAmount, method: selectedMethod, locale: currentLang })
-          });
-          const data = await res.json();
-          if (data.url) {
-            window.location.href = data.url;
-          } else {
-            throw new Error(data.error || 'Errore sconosciuto');
-          }
-        } catch (err) {
-          showModalError(translations['do_error_generic'] || 'Si è verificato un errore. Riprova tra poco.');
-          modalPayBtn.textContent = originalText;
-          modalPayBtn.disabled = false;
-        }
-        return;
-      }
-
-      // ==== PAYPAL : vraie API PayPal, toujours (jamais simulé) ====
-      if (selectedMethod === 'paypal') {
-        try {
-          const res = await fetch('create-paypal-order.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount: selectedAmount, locale: currentLang })
-          });
-          const data = await res.json();
-          if (data.url) {
-            window.location.href = data.url;
-          } else {
-            throw new Error(data.error || 'Errore sconosciuto');
-          }
-        } catch (err) {
-          showModalError(translations['do_error_generic'] || 'Si è verificato un errore. Riprova tra poco.');
-          modalPayBtn.textContent = originalText;
-          modalPayBtn.disabled = false;
-        }
-        return;
-      }
-
-      // ==== SATISPAY / SEPA : en attente d'intégration dédiée (voir notes dans la fenêtre) ====
-      if (SIMULATE_NON_CARD_METHODS) {
-        setTimeout(() => {
-          window.location.href = `success.html?amount=${selectedAmount}&method=${selectedMethod}&simulated=1`;
-        }, 1500);
-      }
+      const texts = DONATION_MAIL_TEXT[currentLang] || DONATION_MAIL_TEXT.it;
+      const subject = encodeURIComponent(texts.subject(amount));
+      const body = encodeURIComponent(texts.body(amount));
+      window.location.href = `mailto:${DONATION_EMAIL}?subject=${subject}&body=${body}`;
     });
   }
 
