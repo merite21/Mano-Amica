@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const activeBtn = document.querySelector('.amount-btn.active');
       const amount = customVal > 0 ? customVal : (activeBtn ? parseFloat(activeBtn.getAttribute('data-amount')) : 0);
 
-      if (!amount || amount <= 0) {
-        errorEl.textContent = translations['do_error_amount'] || 'Scegli o inserisci un importo valido.';
+      if (!amount || amount < 500) {
+        errorEl.textContent = translations['do_error_amount'] || 'Scegli o inserisci un importo valido (minimo 500 €).';
         errorEl.style.display = 'block';
         return;
       }

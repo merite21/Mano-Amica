@@ -46,14 +46,14 @@
     <div>
       <p class="section-label" data-i18n="do_amount_label">Importo richiesto</p>
       <div class="amounts">
-        <button class="amount-btn active" data-amount="15">15 €</button>
-        <button class="amount-btn" data-amount="30">30 €</button>
-        <button class="amount-btn" data-amount="50">50 €</button>
-        <button class="amount-btn" data-amount="100">100 €</button>
-        <button class="amount-btn" data-amount="250">250 €</button>
-        <button class="amount-btn" data-amount="500">500 €</button>
+        <button class="amount-btn active" data-amount="500">500 €</button>
+        <button class="amount-btn" data-amount="1000">1.000 €</button>
+        <button class="amount-btn" data-amount="2500">2.500 €</button>
+        <button class="amount-btn" data-amount="5000">5.000 €</button>
+        <button class="amount-btn" data-amount="10000">10.000 €</button>
+        <button class="amount-btn" data-amount="25000">25.000 €</button>
       </div>
-      <input type="number" id="custom-amount" class="amount-custom" placeholder="Oppure indica un altro importo (€)" data-i18n-placeholder="do_amount_placeholder">
+      <input type="number" id="custom-amount" class="amount-custom" min="500" step="1" placeholder="Oppure indica un altro importo, minimo 500 € (€)" data-i18n-placeholder="do_amount_placeholder">
 
       <button id="confirm-donation" class="btn btn-solid" style="margin-top:28px;" data-i18n="do_confirm_btn">Richiedi un aiuto</button>
       <p id="donation-error" style="color:var(--clay); font-size:.85rem; margin-top:14px; display:none;"></p>
@@ -62,10 +62,10 @@
     <div class="impact-card">
       <h3 data-i18n="do_impact_h3">Ecco cosa possiamo offrirti</h3>
       <ul>
-        <li><span>15 €</span><b data-i18n="do_i1">Un pacco alimentare per una famiglia</b></li>
-        <li><span>30 €</span><b data-i18n="do_i2">Una visita medica di base</b></li>
-        <li><span>50 €</span><b data-i18n="do_i3">Una settimana di ascolto e sostegno</b></li>
-        <li><span>100 €</span><b data-i18n="do_i4">Materiale per un corso di formazione</b></li>
+        <li><span>500 €</span><b data-i18n="do_i1">Un mese di sostegno alimentare per una famiglia</b></li>
+        <li><span>1.000 €</span><b data-i18n="do_i2">Un ciclo completo di cure mediche</b></li>
+        <li><span>2.500 €</span><b data-i18n="do_i3">Un corso di formazione professionale</b></li>
+        <li><span>5.000 €</span><b data-i18n="do_i4">L'avvio di un piccolo progetto comunitario</b></li>
       </ul>
     </div>
   </section>
@@ -73,7 +73,7 @@
   <footer>
     <strong><svg class="logo-mark" viewBox="0 0 100 120" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="26" y="34" width="10" height="34" rx="5"/><rect x="38" y="22" width="10" height="46" rx="5"/><rect x="50" y="16" width="10" height="52" rx="5"/><rect x="62" y="26" width="10" height="42" rx="5"/><path d="M22 62 Q22 100 50 102 Q78 100 78 62 L78 56 Q50 50 22 56 Z"/><rect x="0" y="0" width="34" height="15" rx="7.5" transform="translate(6,68) rotate(-28)"/></g></svg><span>Mano Amica</span></strong>
     <nav><a href="index.html" data-i18n="nav_home">Home</a><a href="chi-siamo.html" data-i18n="nav_chi_siamo">Chi siamo</a><a href="come-aiutiamo.html" data-i18n="nav_come_aiutiamo">Come aiutiamo</a><a href="dona-ora.html" data-i18n="nav_dona_ora">Richiedi aiuto</a><a href="contatti.html" data-i18n="nav_contatti">Contatti</a><a href="archivio.html" data-i18n="nav_archivio">Archivio</a><a href="privacy.html">Privacy</a><a href="cookie-policy.html">Cookie</a></nav>
-    <span data-i18n="footer_copyright">© 2026 · Fondazione registrata in Italia</span>
+    <span data-i18n="footer_copyright">© 2026 · Fondazione registrata in Italia dal [ANNO DI FONDAZIONE]</span>
   </footer>
 
 <script src="assets/script.js?v=1788168268"></script>
