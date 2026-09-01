@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#1F3A2E"/>
-  <text x="32" y="44" font-family="Georgia, serif" font-style="italic" font-size="34" fill="#D4A94A" text-anchor="middle">M</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120">
+  <rect x="-10" y="-6" width="120" height="132" rx="18" fill="#1F3A2E"/>
+  <g fill="#D4A94A">
+    <rect x="26" y="34" width="10" height="34" rx="5"/>
+    <rect x="38" y="22" width="10" height="46" rx="5"/>
+    <rect x="50" y="16" width="10" height="52" rx="5"/>
+    <rect x="62" y="26" width="10" height="42" rx="5"/>
+    <path d="M22 62 Q22 100 50 102 Q78 100 78 62 L78 56 Q50 50 22 56 Z"/>
+    <rect x="0" y="0" width="34" height="15" rx="7.5" transform="translate(6,68) rotate(-28)"/>
+  </g>
 </svg>

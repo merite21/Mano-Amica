@@ -7,4 +7,4 @@ define('SITE_URL', 'http://localhost:8000');
 // ATTENTION : en local (MAMP / php -S), l'envoi d'email réel ne fonctionne généralement pas
 // (il n'y a pas de serveur mail configuré sur ta machine) — c'est normal de voir une erreur
 // en local. Une fois hébergé chez un vrai hébergeur PHP, ça enverra pour de vrai.
-define('CONTACT_EMAIL', 'info@manoamica.org');
+define('CONTACT_EMAIL', 'donazioni@mano-amica.org');
