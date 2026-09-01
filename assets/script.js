@@ -197,4 +197,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Slider témoignages (page d'accueil)
+  const testiTrack = document.getElementById('testi-track');
+  if (testiTrack) {
+    const slides = Array.from(testiTrack.querySelectorAll('.testi-slide'));
+    const dots = Array.from(document.querySelectorAll('.testi-dot'));
+    const prevBtn = document.getElementById('testi-prev');
+    const nextBtn = document.getElementById('testi-next');
+    let current = 0;
+    let autoTimer = null;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      testiTrack.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(() => goTo(current + 1), 6000);
+    }
+    function stopAuto() {
+      if (autoTimer) clearInterval(autoTimer);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); startAuto(); }));
+
+    goTo(0);
+    startAuto();
+  }
 });
