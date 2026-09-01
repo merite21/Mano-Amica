@@ -103,22 +103,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Bouton "Dona ora" → ouvre l'email du visiteur avec un message pré-rempli,
-  // adressé à la boîte de la fondation. Aucun paiement en ligne n'est traité sur le site.
-  const DONATION_EMAIL = 'donazioni@mano-amica.org';
+  // Bouton "Richiedi un aiuto" → ouvre l'email du visiteur avec un message pré-rempli,
+  // adressé à la boîte de la fondation, pour demander un soutien (Mano Amica est
+  // l'organisme qui accorde des aides, pas qui en reçoit).
+  const AID_REQUEST_EMAIL = 'donazioni@mano-amica.org';
 
-  const DONATION_MAIL_TEXT = {
+  const AID_REQUEST_MAIL_TEXT = {
     it: {
-      subject: amount => `Richiesta di donazione — ${amount} €`,
-      body: amount => `Buongiorno,\n\nDesidero fare una donazione di ${amount} € alla Fondazione Mano Amica.\nPotete indicarmi come procedere?\n\nGrazie mille,`
+      subject: amount => `Richiesta di aiuto — ${amount} €`,
+      body: amount => `Buongiorno,\n\nVorrei richiedere un aiuto di ${amount} € da parte della Fondazione Mano Amica.\n\nEcco la mia situazione:\n[descrivi qui la tua richiesta]\n\nResto a disposizione per ulteriori informazioni.\n\nGrazie mille,`
     },
     fr: {
-      subject: amount => `Demande de don — ${amount} €`,
-      body: amount => `Bonjour,\n\nJe souhaite faire un don de ${amount} € à la Fondation Mano Amica.\nPourriez-vous m'indiquer comment procéder ?\n\nMerci beaucoup,`
+      subject: amount => `Demande d'aide — ${amount} €`,
+      body: amount => `Bonjour,\n\nJe souhaite demander une aide de ${amount} € de la part de la Fondation Mano Amica.\n\nVoici ma situation :\n[décrivez ici votre demande]\n\nJe reste à votre disposition pour toute information complémentaire.\n\nMerci beaucoup,`
     },
     en: {
-      subject: amount => `Donation request — €${amount}`,
-      body: amount => `Hello,\n\nI would like to make a donation of €${amount} to the Mano Amica Foundation.\nCould you let me know how to proceed?\n\nThank you,`
+      subject: amount => `Support request — €${amount}`,
+      body: amount => `Hello,\n\nI would like to request support of €${amount} from the Mano Amica Foundation.\n\nHere is my situation:\n[describe your request here]\n\nI remain available for any further information.\n\nThank you,`
     }
   };
 
@@ -138,10 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const texts = DONATION_MAIL_TEXT[currentLang] || DONATION_MAIL_TEXT.it;
+      const texts = AID_REQUEST_MAIL_TEXT[currentLang] || AID_REQUEST_MAIL_TEXT.it;
       const subject = encodeURIComponent(texts.subject(amount));
       const body = encodeURIComponent(texts.body(amount));
-      window.location.href = `mailto:${DONATION_EMAIL}?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${AID_REQUEST_EMAIL}?subject=${subject}&body=${body}`;
     });
   }
 
